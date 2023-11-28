@@ -8,8 +8,11 @@ public class WordUtils {
         
         // Verifica se la parola è palindroma
         boolean isPalindrome = isPalindrome(word);
+        
+        // Calcola il numero totale di caratteri
+        int totalCharacters = word.length();
 
-        return new WordAnalysis(word, isPalindrome);
+        return new WordAnalysis(word, isPalindrome, totalCharacters);
     }
 	
 	private static boolean isPalindrome(String word) {

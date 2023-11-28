@@ -5,11 +5,13 @@ public class WordAnalysis {
 	private String word;
 	
     private boolean isPalindrome;
+    
+    private int totalCharacters;
 
-    public WordAnalysis(String word, boolean isPalindrome) {
+    public WordAnalysis(String word, boolean isPalindrome, int totalCharacters) {
         this.word = word;
         this.isPalindrome = isPalindrome;
-
+        this.totalCharacters = totalCharacters;
     }
 
 	public String getWord() {
@@ -26,6 +28,14 @@ public class WordAnalysis {
 
 	public void setPalindrome(boolean isPalindrome) {
 		this.isPalindrome = isPalindrome;
+	}
+
+	public int getTotalCharacters() {
+		return totalCharacters;
+	}
+
+	public void setTotalCharacters(int totalCharacters) {
+		this.totalCharacters = totalCharacters;
 	}
     
 }
