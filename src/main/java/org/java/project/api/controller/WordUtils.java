@@ -1,5 +1,8 @@
 package org.java.project.api.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.java.project.pojo.WordAnalysis;
 
 public class WordUtils {
@@ -15,8 +18,12 @@ public class WordUtils {
         // Calcola il numero di vocali e consonanti
         int vowels = countVowels(word);
         int consonants = totalCharacters - vowels;
+        
+        // Calcola la frequenza delle lettere nella parola
+        Map<Character, Integer> frequencyMap = calculateLetterFrequency(word);
 
-        return new WordAnalysis(word, isPalindrome, totalCharacters, vowels, consonants);
+
+        return new WordAnalysis(word, isPalindrome, totalCharacters, vowels, consonants, frequencyMap);
     }
 	
 	private static boolean isPalindrome(String word) {
@@ -33,4 +40,15 @@ public class WordUtils {
 		// Infine, si conta il numero di vocali presenti nella stringa.
         return (int) word.chars().filter(c -> "aeiou".indexOf(c) != -1).count();
     }
+	
+    private static Map<Character, Integer> calculateLetterFrequency(String word) {
+        
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+        for (char c : word.toCharArray()) {
+            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
+        }
+        System.out.println(frequencyMap);
+        return frequencyMap;
+    }
+
 }

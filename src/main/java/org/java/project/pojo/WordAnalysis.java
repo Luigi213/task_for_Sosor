@@ -1,5 +1,7 @@
 package org.java.project.pojo;
 
+import java.util.Map;
+
 public class WordAnalysis {
 	
 	private String word;
@@ -11,13 +13,16 @@ public class WordAnalysis {
     private int vowels;
     
     private int consonants;
+    
+    private Map<Character, Integer> frequencyMap;
 
-    public WordAnalysis(String word, boolean isPalindrome, int totalCharacters, int vowels, int consonants) {
+    public WordAnalysis(String word, boolean isPalindrome, int totalCharacters, int vowels, int consonants, Map<Character, Integer> frequencyMap) {
         this.word = word;
         this.isPalindrome = isPalindrome;
         this.totalCharacters = totalCharacters;
         this.vowels = vowels;
         this.consonants = consonants;
+        this.frequencyMap = frequencyMap;
     }
 
 	public String getWord() {
@@ -58,6 +63,14 @@ public class WordAnalysis {
 
 	public void setConsonants(int consonants) {
 		this.consonants = consonants;
+	}
+
+	public Map<Character, Integer> getFrequencyMap() {
+		return frequencyMap;
+	}
+
+	public void setFrequencyMap(Map<Character, Integer> frequencyMap) {
+		this.frequencyMap = frequencyMap;
 	}
     
 }
