@@ -7,11 +7,17 @@ public class WordAnalysis {
     private boolean isPalindrome;
     
     private int totalCharacters;
+    
+    private int vowels;
+    
+    private int consonants;
 
-    public WordAnalysis(String word, boolean isPalindrome, int totalCharacters) {
+    public WordAnalysis(String word, boolean isPalindrome, int totalCharacters, int vowels, int consonants) {
         this.word = word;
         this.isPalindrome = isPalindrome;
         this.totalCharacters = totalCharacters;
+        this.vowels = vowels;
+        this.consonants = consonants;
     }
 
 	public String getWord() {
@@ -36,6 +42,22 @@ public class WordAnalysis {
 
 	public void setTotalCharacters(int totalCharacters) {
 		this.totalCharacters = totalCharacters;
+	}
+
+	public int getVowels() {
+		return vowels;
+	}
+
+	public void setVowels(int vowels) {
+		this.vowels = vowels;
+	}
+
+	public int getConsonants() {
+		return consonants;
+	}
+
+	public void setConsonants(int consonants) {
+		this.consonants = consonants;
 	}
     
 }
