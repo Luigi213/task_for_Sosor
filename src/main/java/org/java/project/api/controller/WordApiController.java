@@ -17,13 +17,23 @@ public class WordApiController {
 	
 	@GetMapping("/analyze/{word}")
     public ResponseEntity<WordAnalysis> analyzeWord(@PathVariable String word) {
+        // Controlla se la parola è vuota o nulla
+        if (word == null || word.trim().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         WordAnalysis result = WordUtils.analyzeWord(word);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-	
+
     @PostMapping("/compare")
     public ResponseEntity<SimilarityScore> compareWords(@RequestParam String word1, @RequestParam String word2) {
-        SimilarityScore result = WordUtils.compareWords(word1, word2);
+        // Controlla se una delle parole è vuota o nulla
+    	SimilarityScore result = WordUtils.compareWords(word1, word2);
+        if (word1 == null || word1.trim().isEmpty() || word2 == null || word2.trim().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

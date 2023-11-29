@@ -55,23 +55,35 @@ public class WordUtils {
     }
 	
     private static Map<Character, Integer> calculateLetterFrequency(String word) {
-        
+
         Map<Character, Integer> frequencyMap = new HashMap<>();
+        
+        // Itera su ciascun carattere della parola.
         for (char c : word.toCharArray()) {
+        	// Aggiorna la mappa delle frequenze:
+            // - Se il carattere è già presente, incrementa il contatore.
+            // - Se il carattere non è presente, inserisce il carattere con un contatore di frequenza iniziale di 1.
             frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
         }
-        System.out.println(frequencyMap);
+        
         return frequencyMap;
     }
     
     private static double calculateSimilarityScore(String word1, String word2) {
         
         int commonLetters = 0;
+        
+        // Itera su ciascun carattere di word1.
         for (char c : word1.toCharArray()) {
+        	// Verifica se il carattere è presente in word2.
+            // Se sì, incrementa il contatore delle lettere comuni.
             if (word2.indexOf(c) != -1) {
                 commonLetters++;
             }
         }
+        
+        // Calcola lo score di similarità dividendo il numero di lettere comuni
+        // per la lunghezza massima tra le due parole.
         return (double) commonLetters / Math.max(word1.length(), word2.length());
     }
 
