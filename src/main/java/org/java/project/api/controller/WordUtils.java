@@ -3,6 +3,7 @@ package org.java.project.api.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.java.project.pojo.SimilarityScore;
 import org.java.project.pojo.WordAnalysis;
 
 public class WordUtils {
@@ -25,6 +26,18 @@ public class WordUtils {
 
         return new WordAnalysis(word, isPalindrome, totalCharacters, vowels, consonants, frequencyMap);
     }
+	
+	public static SimilarityScore compareWords(String word1, String word2) {
+        word1 = word1.toLowerCase();
+        word2 = word2.toLowerCase();
+
+        // Implementa un algoritmo di confronto a tua scelta
+        double similarityScore = calculateSimilarityScore(word1, word2);
+
+        // Restituisci un'istanza di SimilarityScore con lo score
+        return new SimilarityScore(word1, word2, similarityScore);
+    }
+
 	
 	private static boolean isPalindrome(String word) {
 
@@ -49,6 +62,17 @@ public class WordUtils {
         }
         System.out.println(frequencyMap);
         return frequencyMap;
+    }
+    
+    private static double calculateSimilarityScore(String word1, String word2) {
+        
+        int commonLetters = 0;
+        for (char c : word1.toCharArray()) {
+            if (word2.indexOf(c) != -1) {
+                commonLetters++;
+            }
+        }
+        return (double) commonLetters / Math.max(word1.length(), word2.length());
     }
 
 }
